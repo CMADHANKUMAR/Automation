@@ -44,6 +44,5 @@ if __name__ == '__main__':
             except Exception as e:
                 print("Failed to run oozie workflow !")
                 print("Following exception has occured " + str(e))
-    end_time = time.time()
     print("----- Total time taken for automation : %s seconds -----" % (time.time() - start_time)) 
    
