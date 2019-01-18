@@ -1,0 +1,645 @@
+<!--
+        This workflow runs hive queries.
+-->
+
+<workflow-app xmlns="uri:oozie:workflow:0.4" name="medical_dataset_query_execution">
+     <start to="hive-node1"/>
+
+    <action name="hive-node1">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node2"/>
+        <error to="fail"/>
+    </action>
+
+    <action name="hive-node2">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node3"/>
+        <error to="fail"/>
+    </action>
+
+    <action name="hive-node3">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node4"/>
+        <error to="fail"/>
+    </action>
+
+    <action name="hive-node4">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node5"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node5">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node6"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node6">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node7"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node7">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node8"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node8">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node9"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node9">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node10"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node10">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node11"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node11">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node12"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node12">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node13"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node13">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node14"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node14">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node15"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node15">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node16"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node16">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node17"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node17">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node18"/>
+        <error to="fail"/>
+    </action>
+
+    <action name="hive-node18">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node19"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node19">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node20"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node20">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node21"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node21">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node22"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node22">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node23"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node23">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node24"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node24">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node25"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node25">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node26"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node26">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node27"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node27">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node28"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node28">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node29"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node29">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node30"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node30">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node31"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node31">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node32"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node32">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node33"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node33">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node34"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node34">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node35"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node35">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="hive-node36"/>
+        <error to="fail"/>
+    </action>
+    <action name="hive-node36">
+        <hive xmlns="uri:oozie:hive-action:0.4">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+            </configuration>
+            <script>hive.sql</script>
+            <param>db_name=${databaseName}</param>
+            <param>rsrch_pay_table=${rsrchpaytableName}</param>
+        </hive>
+        <ok to="end"/>
+        <error to="fail"/>
+    </action>
+
+    <action name="spark-node">
+        <spark xmlns="uri:oozie:spark-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <master>yarn-cluster</master>
+            <name>medical_dataset_sqarksql</name>
+            <jar>create_parq_common.py</jar>
+            <spark-opts>--executor-memory 8G --num-executors 2 --executor-cores 3 --conf spark.eventLog.enabled=true --conf spark.eventLog.dir=${nameNode}/spark2-history --conf spark.yarn.historyServer.address=http://172.31.34.234:18081</spark-opts>
+            <arg>${rpay_dataset_location}</arg>
+            <arg>${output_path}</arg>
+        </spark>
+        <ok to="end" />
+        <error to="fail" />
+    </action>
+
+    <kill name="fail">
+        <message>Hive failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
+
