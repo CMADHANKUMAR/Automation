@@ -36,12 +36,12 @@ class SparkAutomate:
         util.run_call(cmd, shell=True)
 
     def run_query(self):
-       print("Running spark query in crontab")
-       cmd = spark2_home + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 2g "+ os.path.abspath(spark_query_script)
-       cron = CronTab(user='root')
-       job = cron.new(command=cmd, comment='Run spark job every '+ str(spark_interval) +' minutes')
-       job.minute.every(spark_interval)
-       cron.write()
+        print("Running spark query in crontab")
+        cmd = spark2_home + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 2g "+ os.path.abspath(spark_query_script)
+        cron = CronTab(user='root')
+        job = cron.new(command=cmd, comment='Run spark job every '+ str(spark_interval) +' minutes')
+        job.minute.every(spark_interval)
+        cron.write()
        
 
     def configure_schema(self):
