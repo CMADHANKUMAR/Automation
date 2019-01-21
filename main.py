@@ -10,10 +10,11 @@ import time
 
 if __name__ == '__main__':
     util = Util()
+    util.get_cluster_details()
     hdfs = Hdfs() 
     
     start_time = time.time()
-   
+    
     try:
         print("Setting up the datasets .. ")
         data = Dataset( url_list, util)
@@ -22,7 +23,7 @@ if __name__ == '__main__':
         print("Failed to set up the datasets !")
         print("Following exception has occured " + str(e))
     else :
-        try :
+        try : 
             print("Running spark application..")
             spark = SparkAutomate(spark_dir_list, util, hdfs)
             spark.automate()
@@ -44,5 +45,5 @@ if __name__ == '__main__':
             except Exception as e:
                 print("Failed to run oozie workflow !")
                 print("Following exception has occured " + str(e))
-    print("----- Total time taken for automation : %s seconds -----" % (time.time() - start_time)) 
-   
+    print("----- Total time taken for automation : %s seconds -----" % (time.time() - start_time))
+    

@@ -1,6 +1,13 @@
+ambari_url = "http://10.81.1.161:8080/api/v1/clusters"
+ambari_username = "admin"
+ambari_password = "admin" 
+cluster_name = ""
+
 
 name_node = "hdfs://10.81.1.127:8020"
+name_node_port = "8020"
 jobtracker = "10.81.1.161:8088"
+job_tracker_port = "8088"
 local_dataset_path = "datasets"
 hive_target_dataset = "target"
 
@@ -19,7 +26,7 @@ spark2_home ="/usr/hdp/2.6.4.0-91/spark2/bin"
 schema_path_one = "/spark_job_data/src/rpay/schema1"
 schema_path_two = "/spark_job_data/src/rpay/schema2"
 spark_output_path = "/spark_job_data/out/rpay"
-spark_dir_list = ['/spark_job_data', '/spark_job_data/src', '/spark_job_data/src/rpay', '/spark_job_data/src/rpay/schema1', '/spark_job_data/src/rpay/schema2', '/spark_job_data/out', '/spark_job_data/out/rpay']
+spark_dir_list = ['/spark_job_data', '/spark_job_data/src', '/spark_job_data/src/rpay', '/spark_job_data/src/rpay/schema1', '/spark_job_data/src/rpay/schema2', '/spark_job_data/out', '/spark_job_data/out/rpay', 'user', 'user/root']
 spark_interval = 5
 create_parquet_script = "src/create_parq_common.py"
 spark_query_script = "src/query.py"
