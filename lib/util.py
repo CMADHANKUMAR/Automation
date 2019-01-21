@@ -60,5 +60,5 @@ class Util:
         cluster_details [ 'oozie_server_host' ] = oozie_server_host
         cluster_details [ 'oozie_port' ] = oozie_port
                
-        with open('src/data.txt', 'w') as outfile:  
+        with open('src/cluster_details.json', 'w') as outfile:  
             json.dump(cluster_details, outfile)   

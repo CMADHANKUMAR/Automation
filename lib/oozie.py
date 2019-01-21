@@ -25,13 +25,11 @@ class OozieAutomate:
 
 
     def run_workflow(self):
-        with open('src/data.txt', 'r+') as f:
+        with open('src/cluster_details.json', 'r+') as f:
             data = json.load(f)
-        print(data)
 
         print("running oozie workflow in crontab")
         cmd = "oozie job --oozie http://"+ data['oozie_server_host'] + ":"+ data['oozie_port'] + "/oozie -config " + os.path.abspath(job_file_path) + " -run"
-        print(cmd)
         cron = CronTab(user='root')
         job = cron.new(command=cmd, comment='Run hive job every '+str(oozie_interval) +' minutes')
         job.minute.every(oozie_interval)
@@ -39,14 +37,11 @@ class OozieAutomate:
 
     def configure_job(self):
         
-        with open('src/data.txt', 'r+') as f:
+        with open('src/cluster_details.json', 'r+') as f:
             data = json.load(f)
-        print(data)
         name_node = "hdfs://"+data['name_node_host']+":"+data['name_node_port']+""
         jobtracker = data['job_tracker_host'] + ":"+data['job_tracker_port']
         
-        print(name_node)
-        print(jobtracker)
         print("configuring job.properties")
         config = ConfigParser.ConfigParser()
         config.optionxform = str
