@@ -1,17 +1,13 @@
 ambari_url = "http://10.81.1.161:8080/api/v1/clusters"
 ambari_username = "admin"
 ambari_password = "admin" 
-cluster_name = ""
 
 
-name_node = "hdfs://10.81.1.127:8020"
 name_node_port = "8020"
-jobtracker = "10.81.1.161:8088"
 job_tracker_port = "8088"
 local_dataset_path = "datasets"
 hive_target_dataset = "target"
 
-oozie_host ="10.81.1.161"
 oozie_port = "11000"
 oozie_dir_list = ["/oozie_data","/oozie_data/app_directory"]
 oozie_app_directory = "/oozie_data/app_directory"
@@ -34,4 +30,3 @@ spark_query_script = "src/query.py"
 hive_dir_list = [ '/hive_job_data','/hive_job_data/rsrch_data','/hive_job_data/rsrch_data/2017','/hive_job_data/rsrch_data/2016', '/hive_job_data/rsrch_data/2015', '/hive_job_data/rsrch_data/2014', '/hive_job_data/rsrch_data/2013']
 hive_target = "target"
 hdfs_target = "/hive_job_data/rsrch_data"
-

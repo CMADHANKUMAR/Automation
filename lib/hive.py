@@ -23,14 +23,12 @@ class HiveAutomate:
            cmd = "python src/rsrch_process.py "+local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P06292018.csv "+hive_target+"/"+str(year)+".csv "+str(year)
            self.util.run_call(cmd, shell=True)
 
-
     def push_data_to_hdfs(self):
          print("pushing data to HDFS")
          for year in range(2013, 2018):
              src = hive_target+"/"+str(year)+".csv "
              dest = hdfs_target+"/"+str(year)
              self.hdfs.put_file(src, dest, self.util)
-
 
     def load_hive_tables(self):
          print("creating hive tables")

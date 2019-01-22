@@ -14,9 +14,8 @@ class SparkAutomate:
         for directory in self.dir_list:
             self.hdfs.make_dir(directory, self.util)
 
+        self.hdfs.own_dir("/user/root", self.util)
         self.hdfs.own_dir(self.dir_list[0], self.util)
-        self.hdfs.own_dir("user", self.util)
-        self.hdfs.own_dir("user/root", self.util)
 
     def push_data_to_hdfs(self):
         print("Pushing dataset to hdfs")

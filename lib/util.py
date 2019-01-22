@@ -29,13 +29,9 @@ class Util:
                 return None
             return res_json.json()
 
-    
     def get_cluster_details(self):
-       
-        
         res_json = self.get_from_ambari(ambari_url)
         cluster_name = res_json["items"][0]["Clusters"]["cluster_name"]  
-        
         name_node_url = ambari_url + "/" + cluster_name + "/services/HDFS/components/NAMENODE"
         res_json = self.get_from_ambari(name_node_url)
         name_node_host = res_json["host_components"][0]["HostRoles"]["host_name"]
@@ -43,7 +39,6 @@ class Util:
         job_tracker_url = ambari_url + "/" + cluster_name + "/services/YARN/components/RESOURCEMANAGER"
         res_json = self.get_from_ambari(job_tracker_url)
         job_tracker_host = res_json["host_components"][0]["HostRoles"]["host_name"]
-
 
         oozie_host_url = ambari_url + "/" + cluster_name + "/services/OOZIE/components/OOZIE_SERVER"
         res_json = self.get_from_ambari(oozie_host_url)

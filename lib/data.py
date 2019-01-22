@@ -10,9 +10,7 @@ class Dataset:
         print("Setting up the datasets")
         if not os.path.exists(local_dataset_path):
             os.makedirs(local_dataset_path)
-
         year = 2013
-
         for url in self.url_list :
             local_path = local_dataset_path+"/"+str(year)+".ZIP"
             self.util.download_file(url, local_path)
@@ -25,10 +23,7 @@ class Dataset:
                 except:
                     print("Error while deleting file ", file_name)
 
-
             year = year+1
-
-
 
     def automate(self):
         self.setup_datasets()
