@@ -22,10 +22,10 @@ class SparkAutomate:
         dataset_year = 2013
         for year in range(dataset_year, 2018):
             if year < 2016 :
-                dataset = local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P06292018.csv "
+                dataset = local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
                 schema_path = schema_path_one
             else  :
-                dataset = local_dataset_path+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+"_P06292018.csv "
+                dataset = local_dataset_path+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
                 schema_path = schema_path_two
             self.hdfs.put_file(dataset, schema_path, self.util)
 
@@ -41,7 +41,7 @@ class SparkAutomate:
         job = cron.new(command=cmd, comment='Run spark job every '+ str(spark_interval) +' minutes')
         job.minute.every(spark_interval)
         cron.write()
-       
+
 
     def configure_schema(self):
         print("configuring schema.json file")

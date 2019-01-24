@@ -20,7 +20,7 @@ class HiveAutomate:
             os.makedirs(hive_target)
 
         for year in range(dataset_year, 2018):
-           cmd = "python src/rsrch_process.py "+local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P06292018.csv "+hive_target+"/"+str(year)+".csv "+str(year)
+           cmd = "python src/rsrch_process.py "+local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "+hive_target+"/"+str(year)+".csv "+str(year)
            self.util.run_call(cmd, shell=True)
 
     def push_data_to_hdfs(self):
