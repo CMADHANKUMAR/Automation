@@ -17,7 +17,7 @@ if __name__ == '__main__':
     
     try:
         print("Setting up the datasets .. ")
-        data = Dataset( url_list, util)
+        data = Dataset( URL_LIST, util)
         data.automate()
     except Exception as e:
         print("Failed to set up the datasets !")
@@ -25,14 +25,14 @@ if __name__ == '__main__':
     else :
         try : 
             print("Running spark application..")
-            spark = SparkAutomate(spark_dir_list, util, hdfs)
+            spark = SparkAutomate(SPARK_DIR_LIST, util, hdfs)
             spark.automate()
         except Exception as e:
             print("Failed to run spark application !")
             print("Following exception has occured " + str(e))
         try:
             print("Running hive queries .. ")
-            hive = HiveAutomate( hive_dir_list, util, hdfs)
+            hive = HiveAutomate( HIVE_DIR_LIST, util, hdfs)
             hive.automate()
         except Exception as e: 
             print("Failed to run hive queries !")
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         else:
             try:
                 print("Running oozie workflow...")
-                oozie = OozieAutomate( oozie_dir_list, hdfs, util)
+                oozie = OozieAutomate( OOZIE_DIR_LIST, hdfs, util)
                 oozie.automate()
             except Exception as e:
                 print("Failed to run oozie workflow !")

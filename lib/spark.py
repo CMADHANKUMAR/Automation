@@ -22,24 +22,24 @@ class SparkAutomate:
         dataset_year = 2013
         for year in range(dataset_year, 2018):
             if year < 2016 :
-                dataset = local_dataset_path+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
-                schema_path = schema_path_one
+                dataset = LOCAL_DATASET_PATH+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
+                schema_path = SCHEMA_PATH_ONE
             else  :
-                dataset = local_dataset_path+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
-                schema_path = schema_path_two
+                dataset = LOCAL_DATASET_PATH+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
+                schema_path = SCHEMA_PATH_TWO
             self.hdfs.put_file(dataset, schema_path, self.util)
 
     def create_parquet(self, util):
         print("converting dataset to parquet format")
-        cmd = spark2_home + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 7g "+os.path.abspath(create_parquet_script)
+        cmd = SPARK2_HOME + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 7g "+os.path.abspath(CREATE_PARQUET_SCRIPT)
         util.run_call(cmd, shell=True)
 
     def run_query(self):
         print("Running spark query in crontab")
-        cmd = spark2_home + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 2g "+ os.path.abspath(spark_query_script)
+        cmd = SPARK2_HOME + "/spark-submit --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-cores 3 --executor-memory 2g "+ os.path.abspath(SPARK_QUERY_SCRIPT)
         cron = CronTab(user='root')
-        job = cron.new(command=cmd, comment='Run spark job every '+ str(spark_interval) +' minutes')
-        job.minute.every(spark_interval)
+        job = cron.new(command=cmd, comment='Run spark job every '+ str(SPARK_INTERVAL) +' minutes')
+        job.minute.every(SPARK_INTERVAL)
         cron.write()
 
 
@@ -48,10 +48,10 @@ class SparkAutomate:
         filename = 'src/schema.json'
         with open(filename, 'r') as f:
             data = json.load(f)
-            data['schema1']['input_path'] = schema_path_one
-            data['schema2']['input_path'] = schema_path_two
-            data['schema1']['output_path'] = spark_output_path
-            data['schema2']['output_path'] = spark_output_path
+            data['schema1']['input_path'] = SCHEMA_PATH_ONE
+            data['schema2']['input_path'] = SCHEMA_PATH_TWO
+            data['schema1']['output_path'] = SPARK_OUTPUT_PATH
+            data['schema2']['output_path'] = SPARK_OUTPUT_PATH
         os.remove(filename)
         with open(filename, 'w') as f:
             json.dump(data, f)
