@@ -1,0 +1,7 @@
+---
+- name: install , configure and run spark, oozie and hive jobs
+  hosts: manager
+  remote_user: root
+  sudo: yes
+  roles:
+    - jobs
