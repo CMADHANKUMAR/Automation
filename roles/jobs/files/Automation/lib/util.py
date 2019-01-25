@@ -23,37 +23,37 @@ class Util:
             print "error ignored"
             return
     def get_from_ambari(self, url) :
-            res_json = requests.get(url, auth=(ambari_username, ambari_password), verify=False)
+            res_json = requests.get(url, auth=(AMBARI_USERNAME, AMBARI_PASSWORD), verify=False)
             if res_json.status_code != 200:
                 print("Failed to send request to"+ url)
                 return None
             return res_json.json()
 
     def get_cluster_details(self):
-        res_json = self.get_from_ambari(ambari_url)
+        res_json = self.get_from_ambari(AMBARI_URL)
         cluster_name = res_json["items"][0]["Clusters"]["cluster_name"]  
-        name_node_url = ambari_url + "/" + cluster_name + "/services/HDFS/components/NAMENODE"
+        name_node_url = AMBARI_URL + "/" + cluster_name + "/services/HDFS/components/NAMENODE"
         res_json = self.get_from_ambari(name_node_url)
         name_node_host = res_json["host_components"][0]["HostRoles"]["host_name"]
 
-        job_tracker_url = ambari_url + "/" + cluster_name + "/services/YARN/components/RESOURCEMANAGER"
+        job_tracker_url = AMBARI_URL + "/" + cluster_name + "/services/YARN/components/RESOURCEMANAGER"
         res_json = self.get_from_ambari(job_tracker_url)
         job_tracker_host = res_json["host_components"][0]["HostRoles"]["host_name"]
 
-        oozie_host_url = ambari_url + "/" + cluster_name + "/services/OOZIE/components/OOZIE_SERVER"
+        oozie_host_url = AMBARI_URL + "/" + cluster_name + "/services/OOZIE/components/OOZIE_SERVER"
         res_json = self.get_from_ambari(oozie_host_url)
         oozie_server_host = res_json["host_components"][0]["HostRoles"]["host_name"]
  
         cluster_details = {}
-        cluster_details ['ambari_user_name'] = ambari_username
-        cluster_details ['ambari_password'] = ambari_password
+        cluster_details ['ambari_user_name'] = AMBARI_USERNAME
+        cluster_details ['ambari_password'] = AMBARI_PASSWORD
         cluster_details ['cluster_name'] = cluster_name
         cluster_details [ 'name_node_host' ] = name_node_host
-        cluster_details [ 'name_node_port' ] = name_node_port
+        cluster_details [ 'name_node_port' ] = NAME_NODE_PORT
         cluster_details [ 'job_tracker_host' ] = job_tracker_host
-        cluster_details [ 'job_tracker_port' ] = job_tracker_port
+        cluster_details [ 'job_tracker_port' ] = JOB_TRACKER_PORT
         cluster_details [ 'oozie_server_host' ] = oozie_server_host
-        cluster_details [ 'oozie_port' ] = oozie_port
+        cluster_details [ 'oozie_port' ] = OOZIE_PORT
                
         with open('src/cluster_details.json', 'w') as outfile:  
             json.dump(cluster_details, outfile)   
