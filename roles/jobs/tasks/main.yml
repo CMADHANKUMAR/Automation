@@ -5,6 +5,12 @@
 # Copy the configuration
 - name: copying template  to /tmp
   template: src=config.py.j2 dest=/tmp/Automation/conf/config.py
+#Installing requirements.txt
+- name: Install requirements
+  command : chdir=/tmp/Automation pip install -r requirements.txt
+  register : out
+#printing output to console
+- debug: var=out.stdout_lines
 # This will run the automation script
 - name: running automation script
   command: chdir=/tmp/Automation python main.py
