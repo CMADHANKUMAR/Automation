@@ -20,8 +20,8 @@ class OozieAutomate:
 
     def push_workflow_to_hdfs(self):
         print("pushing workflow to hdfs")
-        self.hdfs.put_file(query_path, oozie_app_directory,self.util)
-        self.hdfs.put_file(workflow_path, oozie_app_directory, self.util)
+        self.hdfs.put_file(QUERY_PATH, OOZIE_APP_DIRECTORY,self.util)
+        self.hdfs.put_file(WORKFLOW_PATH, OOZIE_APP_DIRECTORY, self.util)
 
 
     def run_workflow(self):
@@ -29,10 +29,10 @@ class OozieAutomate:
             data = json.load(f)
 
         print("running oozie workflow in crontab")
-        cmd = "oozie job --oozie http://"+ data['oozie_server_host'] + ":"+ data['oozie_port'] + "/oozie -config " + os.path.abspath(job_file_path) + " -run"
+        cmd = "oozie job --oozie http://"+ data['oozie_server_host'] + ":"+ data['oozie_port'] + "/oozie -config " + os.path.abspath(JOB_FILE_PATH) + " -run"
         cron = CronTab(user='root')
-        job = cron.new(command=cmd, comment='Run hive job every '+str(oozie_interval) +' minutes')
-        job.minute.every(oozie_interval)
+        job = cron.new(command=cmd, comment='Run hive job every '+str(OOZIE_INTERVAL) +' minutes')
+        job.minute.every(OOZIE_INTERVAL)
         cron.write()
 
     def configure_job(self):
@@ -45,11 +45,11 @@ class OozieAutomate:
         print("configuring job.properties")
         config = ConfigParser.ConfigParser()
         config.optionxform = str
-        config.read(job_file_path)
+        config.read(JOB_FILE_PATH)
         config.set('DEFAULT', 'nameNode', name_node)
         config.set('DEFAULT', 'jobTracker', jobtracker)
-        config.set('DEFAULT', 'appPath', oozie_app_directory)
-        with open(job_file_path, 'wb') as configfile:
+        config.set('DEFAULT', 'appPath', OOZIE_APP_DIRECTORY)
+        with open(JOB_FILE_PATH, 'wb') as configfile:
             config.write(configfile)
 
     def automate(self):
