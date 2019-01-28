@@ -15,7 +15,7 @@ class Dataset:
             local_path = LOCAL_DATASET_PATH+"/"+str(year)+".ZIP"
             self.util.download_file(url, local_path)
             self.util.unzip_file(local_path, LOCAL_DATASET_PATH)
-            file_list =[ LOCAL_DATASET_PATH+"/OP_DTL_GNRL_PGYR"+str(year)+"_P01182019.csv", LOCAL_DATASET_PATH+"/OP_REMOVED_DELETED_PGYR"+str(year)+"_P01182019.csv", LOCAL_DATASET_PATH+"/OP_DTL_OWNRSHP_PGYR"+str(year)+"_P01182019.csv", LOCAL_DATASET_PATH+"/OP_PGYR"+str(year)+"_README_P01182019.txt", local_path]
+            file_list =[ LOCAL_DATASET_PATH+"/OP_DTL_GNRL_PGYR"+str(year)+DATASET_SUFFIX+".csv", LOCAL_DATASET_PATH+"/OP_REMOVED_DELETED_PGYR"+str(year)+DATASET_SUFFIX+".csv", LOCAL_DATASET_PATH+"/OP_DTL_OWNRSHP_PGYR"+str(year)+DATASET_SUFFIX+".csv", LOCAL_DATASET_PATH+"/OP_PGYR"+str(year)+"_README"+DATASET_SUFFIX+".txt", local_path]
             print(os.getcwd())
             for file_name in file_list :
                 try:

@@ -1,6 +1,6 @@
 AMBARI_URL = "http://localhost:8080/api/v1/clusters"
 AMBARI_USERNAME = "admin"
-AMBARI_PASSWORD = "MapleAdmin123$"
+AMBARI_PASSWORD = "admin"
 NAME_NODE_PORT = "8020"
 JOB_TRACKER_PORT = "8088"
 LOCAL_DATASET_PATH = "datasets"
@@ -13,6 +13,7 @@ QUERY_PATH = "src/hive.sql"
 JOB_FILE_PATH = "src/job.properties"
 OOZIE_INTERVAL = {{ automation['oozie_interval'] }}
 URL_LIST = ['http://download.cms.gov/openpayments/PGYR13_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR14_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR15_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR16_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR17_P011819.ZIP' ]
+DATASET_SUFFIX = "_P01182019"
 SPARK2_HOME ="{{ automation['spark2_home'] }}"
 SCHEMA_PATH_ONE = "/spark_job_data/src/rpay/schema1"
 SCHEMA_PATH_TWO = "/spark_job_data/src/rpay/schema2"

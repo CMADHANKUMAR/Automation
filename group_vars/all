@@ -1,4 +1,5 @@
 automation:
+  flag : True
   oozie_interval : 35
   spark2_home : "/usr/hdp/2.6.4.0-91/spark2/bin"
   spark_interval : 30

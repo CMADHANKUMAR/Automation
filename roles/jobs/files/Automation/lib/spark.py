@@ -22,10 +22,10 @@ class SparkAutomate:
         dataset_year = 2013
         for year in range(dataset_year, 2018):
             if year < 2016 :
-                dataset = LOCAL_DATASET_PATH+"/OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
+                dataset = LOCAL_DATASET_PATH+"/OP_DTL_RSRCH_PGYR"+str(year)+DATASET_SUFFIX+".csv "
                 schema_path = SCHEMA_PATH_ONE
             else  :
-                dataset = LOCAL_DATASET_PATH+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+"_P01182019.csv "
+                dataset = LOCAL_DATASET_PATH+"/"+"OP_DTL_RSRCH_PGYR"+str(year)+DATASET_SUFFIX+".csv "
                 schema_path = SCHEMA_PATH_TWO
             self.hdfs.put_file(dataset, schema_path, self.util)
 
