@@ -7,7 +7,6 @@ class Dataset:
         self.util = util
 
     def setup_datasets(self):
-        print("Setting up the datasets")
         if not os.path.exists(LOCAL_DATASET_PATH):
             os.makedirs(LOCAL_DATASET_PATH)
         year = 2013
