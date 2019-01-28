@@ -4,4 +4,4 @@
   remote_user: root
   sudo: yes
   roles:
-    - jobs
+    - { role: jobs, when: automation.flag == "True" }
