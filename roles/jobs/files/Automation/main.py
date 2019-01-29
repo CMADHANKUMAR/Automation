@@ -17,23 +17,23 @@ if __name__ == '__main__':
     
     try:
         print("Setting up the datasets .. ")
-        #data = Dataset( URL_LIST, util)
-        #data.automate()
+        data = Dataset( URL_LIST, util)
+        data.automate()
     except Exception as e:
         print("Failed to set up the datasets !")
         print("Following exception has occured " + str(e))
     else :
         try : 
             print("Running spark application..")
-            #spark = SparkAutomate(SPARK_DIR_LIST, util, hdfs)
-            #spark.automate()
+            spark = SparkAutomate(SPARK_DIR_LIST, util, hdfs)
+            spark.automate()
         except Exception as e:
             print("Failed to run spark application !")
             print("Following exception has occured " + str(e))
         try:
             print("Running hive queries .. ")
-            #hive = HiveAutomate( HIVE_DIR_LIST, util, hdfs)
-            #hive.automate()
+            hive = HiveAutomate( HIVE_DIR_LIST, util, hdfs)
+            hive.automate()
         except Exception as e: 
             print("Failed to run hive queries !")
             print("Following exception has occured " + str(e))
