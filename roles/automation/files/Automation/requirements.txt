@@ -1,3 +1,4 @@
 python-crontab
 configparser
 requests
+xmltodict

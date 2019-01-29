@@ -2,6 +2,8 @@ from conf.config import *
 import requests
 import json
 import subprocess
+import xmltodict
+
 class Util:
     def download_file(self, url, local_path, proxy=None):
        if proxy:
@@ -28,32 +30,23 @@ class Util:
                 print("Failed to send request to"+ url)
                 return None
             return res_json.json()
+      
+    def get_property(self, config_file_path, property_name):
+        with open(config_file_path, 'r+') as f:
+            conf_dict = xmltodict.parse(f.read())
+        for key in conf_dict['configuration']['property'] :
+            if key['name'] == property_name :
+                return key['value']        
+        
 
     def get_cluster_details(self):
-        res_json = self.get_from_ambari(AMBARI_URL)
-        cluster_name = res_json["items"][0]["Clusters"]["cluster_name"]  
-        name_node_url = AMBARI_URL + "/" + cluster_name + "/services/HDFS/components/NAMENODE"
-        res_json = self.get_from_ambari(name_node_url)
-        name_node_host = res_json["host_components"][0]["HostRoles"]["host_name"]
-
-        job_tracker_url = AMBARI_URL + "/" + cluster_name + "/services/YARN/components/RESOURCEMANAGER"
-        res_json = self.get_from_ambari(job_tracker_url)
-        job_tracker_host = res_json["host_components"][0]["HostRoles"]["host_name"]
-
-        oozie_host_url = AMBARI_URL + "/" + cluster_name + "/services/OOZIE/components/OOZIE_SERVER"
-        res_json = self.get_from_ambari(oozie_host_url)
-        oozie_server_host = res_json["host_components"][0]["HostRoles"]["host_name"]
- 
+        jobtracker = self.get_property(YARN_CONF_FILE,'yarn.resourcemanager.address')
+        name_node_address = self.get_property(HDFS_CONF_FILE,'dfs.namenode.rpc-address')
+        oozie_base_url =  self.get_property(OOZIE_CONF_FILE,'oozie.base.url') 
         cluster_details = {}
-        cluster_details ['ambari_user_name'] = AMBARI_USERNAME
-        cluster_details ['ambari_password'] = AMBARI_PASSWORD
-        cluster_details ['cluster_name'] = cluster_name
-        cluster_details [ 'name_node_host' ] = name_node_host
-        cluster_details [ 'name_node_port' ] = NAME_NODE_PORT
-        cluster_details [ 'job_tracker_host' ] = job_tracker_host
-        cluster_details [ 'job_tracker_port' ] = JOB_TRACKER_PORT
-        cluster_details [ 'oozie_server_host' ] = oozie_server_host
-        cluster_details [ 'oozie_port' ] = OOZIE_PORT
-               
-        with open('src/cluster_details.json', 'w') as outfile:  
-            json.dump(cluster_details, outfile)   
+        cluster_details ['oozie_base_url'] = oozie_base_url
+        cluster_details ['name_node_address'] = name_node_address
+        cluster_details ['jobtracker'] = jobtracker
+
+        with open('src/cluster_details.json', 'w') as outfile:
+            json.dump(cluster_details, outfile)

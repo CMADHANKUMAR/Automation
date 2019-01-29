@@ -1,1 +1,1 @@
-{"ambari_user_name": "admin", "name_node_host": "manager-0", "oozie_server_host": "manager-0", "cluster_name": "testCluster1", "ambari_password": "admin", "job_tracker_port": "8088", "name_node_port": "8020", "job_tracker_host": "manager-0", "oozie_port": "11000"}
+{"name_node_address": "ambari-mgr0:8020", "oozie_base_url": "http://ambari-mgr0:11000/oozie", "jobtracker": "ambari-mgr0:8050"}
