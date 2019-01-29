@@ -10,6 +10,7 @@ QUERY_PATH = "src/hive.sql"
 JOB_FILE_PATH = "src/job.properties"
 OOZIE_INTERVAL = 20
 URL_LIST = ['http://download.cms.gov/openpayments/PGYR13_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR14_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR15_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR16_P011819.ZIP', 'http://download.cms.gov/openpayments/PGYR17_P011819.ZIP' ]
+DATASET_SUFFIX = "_P01182019"
 SPARK2_HOME ="/usr/hdp/2.6.4.0-91/spark2/bin"
 SCHEMA_PATH_ONE = "/spark_job_data/src/rpay/schema1"
 SCHEMA_PATH_TWO = "/spark_job_data/src/rpay/schema2"
